@@ -1,0 +1,16 @@
+{
+  "managers": [
+    {
+      "name": "test",
+      "price": 229,
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "name": "wawd",
+      "phone": "+38(045) 434 63 63",
+      "id": 1
+    }
+  ]
+}
