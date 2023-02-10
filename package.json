@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "animate.css": "^4.1.1",
     "normalize.css": "^8.0.1"
   }
 }

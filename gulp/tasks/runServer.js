@@ -7,6 +7,9 @@ const server = {
     return browserSynk.init({
         server: {
             baseDir: path.clean,
+            serveStaticOptions: {
+              extensions: ["html"]
+          }
         },
         notify: true,
         port: 3001
