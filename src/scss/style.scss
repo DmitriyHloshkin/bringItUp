@@ -5,3 +5,50 @@
 @import '../../node_modules/animate.css/animate';
 
 @import 'main';
+
+
+.showup {
+  &__content {
+    justify-content: flex-start;
+
+    &-slider {
+      width: 650px;
+    }
+  }
+
+}
+
+.feed {
+  .colored {
+    height: 50%;
+  }
+
+}
+
+.feed__slider__field,
+.modules__content-slider {
+  display: flex;
+  align-items: flex-start;
+}
+
+
+@media (max-width: 1200px) {
+  .showup {
+    
+    &__content {
+      width: 1100px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 575px) {
+
+}
