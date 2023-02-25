@@ -5,13 +5,14 @@ export default class DifferenceCard {
   }) {
     this.cards = document.querySelectorAll(cards);
     this.btn = document.querySelector(btn);
+    this.cardSelector = cards;
     this.index = 0;
   }
 
   render() {
     this.cards.forEach(card => {
       card.classList.add('animate__animated', 'animate__fadeIn');
-      if (card !== this.btn.closest('.officer__card-item')) {
+      if (card !== this.btn.closest(this.cardSelector)) {
         card.style.display = 'none';
       }
 
@@ -25,7 +26,7 @@ export default class DifferenceCard {
   showCard(n) {
     this.cards[n].style.display = 'flex';
 
-    if (this.index === 3) {
+    if (this.index === this.cards.length - 1) {
       this.cards[this.cards.length - 1].style.display = 'none';
     }
   }

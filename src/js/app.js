@@ -5,6 +5,7 @@ import ExploreSlider from './modules/slider/slider-explore.js';
 import FeedSlider from './modules/slider/slider-feed.js';
 import VideoPlayer from './modules/playVideo.js';
 import DifferenceCard from './modules/difference.js';
+import Forms from './modules/forms.js';
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -67,10 +68,38 @@ window.addEventListener('DOMContentLoaded', () => {
   player.init();
 
 
-  const difference = new DifferenceCard({
-    btn: '.difference .plus',
+  new DifferenceCard({
+    btn: '.difference .officernew .plus',
     cards: '.difference .officernew .officer__card-item',
-  });
-  difference.render();
+  }).render();
+
+  new DifferenceCard({
+    btn: '.difference .officerold .plus',
+    cards: '.difference .officerold .officer__card-item',
+  }).render();
+
+
+  new Forms({
+    form: '.join form',
+    btnSend: 'button.btn',
+    postOptions: {
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      dataType: 'json',
+      method: 'POST',
+      headers: {},
+    },
+  }).init();
+
+  new Forms({
+    form: '.schedule form',
+    btnSend: 'button.btn',
+    postOptions: {
+      url: 'https://jsonplaceholder.typicode.com/posts',
+      dataType: 'json',
+      method: 'POST',
+      headers: {},
+    },
+  }).init();
+
 });
 
