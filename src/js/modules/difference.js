@@ -10,17 +10,20 @@ export default class DifferenceCard {
   }
 
   render() {
-    this.cards.forEach(card => {
-      card.classList.add('animate__animated', 'animate__fadeIn');
-      if (card !== this.btn.closest(this.cardSelector)) {
-        card.style.display = 'none';
-      }
+    try {
+      this.cards.forEach(card => {
+        card.classList.add('animate__animated', 'animate__fadeIn');
+        if (card !== this.btn.closest(this.cardSelector)) {
+          card.style.display = 'none';
+        }
+  
+      });
+  
+      this.btn.addEventListener('click', () => {
+        this.showCard(this.index++);
+      });
+    } catch (error) {}
 
-    });
-
-    this.btn.addEventListener('click', () => {
-      this.showCard(this.index++);
-    });
   }
 
   showCard(n) {

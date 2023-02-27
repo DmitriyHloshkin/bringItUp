@@ -54,50 +54,55 @@ export default class ExploreSlider extends ModulesSlider {
   }
 
   render() {
-    this.initSlider();
-    this.showSlides(this.slideIndex);
-
     try {
-      this.next.forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          this.action = 'next';
-          this.stopAutoplay();
-          this.plusSlides(1);
-
-          this.beginAutoplay(() => {
-            this.plusSlides.call(this, 1);
+      this.initSlider();
+      this.showSlides(this.slideIndex);
+  
+      try {
+        this.next.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            this.action = 'next';
+            this.stopAutoplay();
+            this.plusSlides(1);
+  
+            this.beginAutoplay(() => {
+              this.plusSlides.call(this, 1);
+            });
           });
         });
-      });
-
-    } catch (e) {}
-
-    try {
-      this.prev.forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          this.action = 'prev';
-          this.stopAutoplay();
-          this.plusSlides(-1);
-
-          this.beginAutoplay(() => {
-            this.plusSlides.call(this, 1);
+  
+      } catch (e) {}
+  
+      try {
+        this.prev.forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            this.action = 'prev';
+            this.stopAutoplay();
+            this.plusSlides(-1);
+  
+            this.beginAutoplay(() => {
+              this.plusSlides.call(this, 1);
+            });
           });
+  
         });
-
+      } catch (e) {}
+  
+      this.startAutoplayAction.forEach((action, i) => {
+        action.addEventListener('click', () => {
+          if (this.startAutoplayAction[i + 1] && this.startAutoplayAction[i + 1].closest('.modules') && !this.idTimer) {
+            this.beginAutoplay(() => {
+              this.plusSlides.call(this, 1);
+            });
+          }
+        });
       });
-    } catch (e) {}
+    } catch (error) {
+      
+    }
 
-    this.startAutoplayAction.forEach((action, i) => {
-      action.addEventListener('click', () => {
-        if (this.startAutoplayAction[i + 1] && this.startAutoplayAction[i + 1].closest('.modules') && !this.idTimer) {
-          this.beginAutoplay(() => {
-            this.plusSlides.call(this, 1);
-          });
-        }
-      });
-    });
 
   }
 }

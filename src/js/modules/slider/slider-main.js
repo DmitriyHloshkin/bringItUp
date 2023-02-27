@@ -7,6 +7,7 @@ export default class MainSlider extends Slider {
     transitionDelay,
     btnNext = null,
     btnStart = null,
+    btnPrev = null,
     popup = null,
     autoPlayDelay,
     autoPlay
@@ -20,9 +21,14 @@ export default class MainSlider extends Slider {
     });
     this.next = document.querySelectorAll(btnNext);
     this.start = document.querySelectorAll(btnStart);
+    this.prev = document.querySelectorAll(btnPrev);
+
     this.popup = document.querySelector(popup);
     this.popupTimerId = null;
-    this.width = window.getComputedStyle(this.wraper).width;
+    try {
+      this.width = window.getComputedStyle(this.wraper).width;
+    } catch (error) {}
+    
     this.offset = 0;
   }
 
@@ -35,15 +41,18 @@ export default class MainSlider extends Slider {
     this.showSlides(this.slideIndex += n);
 
     try {
-      clearInterval(this.popupTimerId);
+      if (this.popup) {
+        clearInterval(this.popupTimerId);
 
-      if (this.slideIndex === 3) {
-        this.popupTimerId = setTimeout(() => {
-          this.popup.style.transform = '';
-        }, 3000);
-      } else {
-        this.initPopup();
+        if (this.slideIndex === 3) {
+          this.popupTimerId = setTimeout(() => {
+            this.popup.style.transform = '';
+          }, 3000);
+        } else {
+          this.initPopup();
+        }
       }
+
     } catch (e) {}
   }
 
@@ -77,13 +86,8 @@ export default class MainSlider extends Slider {
 
   }
 
-  render() {
-    this.initSlider();
-
-    try {
-      this.initPopup();
-    } catch (e) {}
-
+  bindTriggers() {
+  
     try {
       this.next.forEach(btn => {
         btn.addEventListener('click', e => {
@@ -106,7 +110,30 @@ export default class MainSlider extends Slider {
       });
     } catch (e) {}
 
-    this.showSlides(this.slideIndex);
+    try {
+      this.prev.forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          this.action = 'prev';
+          this.showSlides(this.slideIndex -= 1);
+        });
 
+      });
+    } catch (e) {}
+  }
+  render() {
+    try {
+      this.initSlider();
+
+      try {
+        this.initPopup();
+      } catch (e) {}
+
+      this.bindTriggers();
+
+      this.showSlides(this.slideIndex);
+    } catch (error) {
+      
+    }
   }
 }

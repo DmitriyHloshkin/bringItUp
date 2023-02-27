@@ -3,8 +3,10 @@ import PostData from './post/post.js';
 export default class Forms {
   constructor({ form = null, btnSend = null, postOptions }) {
     this.form = document.querySelector(form);
-    this.inputs = this.form.querySelectorAll('[name]');
-    this.btnSend = this.form.querySelector(btnSend);
+    try {
+      this.inputs = this.form.querySelectorAll('[name]');
+      this.btnSend = this.form.querySelector(btnSend);
+    } catch (error) {}
     this.stateForm = new Map();
     this.postData = new PostData(postOptions);
     this.dataForm = null;
@@ -19,9 +21,9 @@ export default class Forms {
       parentInput.appendChild(validBlock);
     };
 
-    this.postData.init();
+    this?.postData.init();
 
-    this.inputs.forEach( input => {
+    this.inputs?.forEach( input => {
       const parentInput = input.parentNode,
             typeInput = input.getAttribute('name'); 
 
@@ -58,7 +60,7 @@ export default class Forms {
 
     });
 
-    this.form.addEventListener('submit', async (e) => {
+    this.form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!this.checkForm()) return;
 

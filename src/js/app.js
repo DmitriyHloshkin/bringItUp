@@ -10,17 +10,18 @@ import Forms from './modules/forms.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   checkWebp();
-  const mainSlider = new MainSlider({
+
+  // sliders
+  new MainSlider({
     wraper: 'body',
     sliderField: '.page',
     transitionDelay: 1,
     btnNext: '.next',
     btnStart: '[data-start-slider]',
     popup: '.hanson',
-  });
-  mainSlider.render();
+  }).render();
 
-  const showSlider = new ModulesSlider({
+  new ModulesSlider({
     wraper: '.showup__content-slider',
     sliderField: '.showup__content-slider-field',
     transitionDelay: 1,
@@ -30,10 +31,9 @@ window.addEventListener('DOMContentLoaded', () => {
       arrowSleide: '.card__controls-arrow',
       titleSlide: '.card__title',
     },
-  });
-  showSlider.render();
+  }).render();
 
-  const modulesSlider = new ExploreSlider({
+  new ExploreSlider({
     wraper: '.modules__slider-container',
     sliderField: '.modules__content-slider',
     transitionDelay: 1,
@@ -46,10 +46,9 @@ window.addEventListener('DOMContentLoaded', () => {
       arrowSleide: '.card__controls-arrow',
       titleSlide: '.card__title',
     },
-  }); 
-  modulesSlider.render();
+  }).render();
 
-  const feedSlider = new FeedSlider({
+  new FeedSlider({
     wraper: '.feed .feed__slider',
     sliderField: '.feed .feed__slider__field',
     transitionDelay: 1,
@@ -58,16 +57,34 @@ window.addEventListener('DOMContentLoaded', () => {
     startAutoplayAction: '.next',
     autoPlayDelay: 3000, 
     autoPlay: true,
-  }); 
-  feedSlider.render();
+  }).render();
 
-  const player = new VideoPlayer({
+  new MainSlider({
+    wraper: 'body',
+    sliderField: '.moduleapp',
+    transitionDelay: 1,
+    btnNext: '.next',
+    btnPrev: '.prev',
+    btnStart: '[data-start-slider]',
+  }).render();
+
+  // players
+  new VideoPlayer({
     triggers: '.showup .play', 
     popup: '.overlay',
-  });
-  player.init();
+  }).init();
 
+  new VideoPlayer({
+    triggers: '.schedule .play', 
+    popup: '.overlay',
+  }).init();
 
+  new VideoPlayer({
+    triggers: '.module .play', 
+    popup: '.overlay',
+  }).init();
+
+  // different cards
   new DifferenceCard({
     btn: '.difference .officernew .plus',
     cards: '.difference .officernew .officer__card-item',
@@ -78,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
     cards: '.difference .officerold .officer__card-item',
   }).render();
 
-
+  // forms
   new Forms({
     form: '.join form',
     btnSend: 'button.btn',

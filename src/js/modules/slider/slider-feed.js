@@ -1,4 +1,5 @@
 import Slider from './slider.js';
+import VideoPlayer from '../playVideo.js';
 
 export default class FeedSlider extends Slider {
   constructor({
@@ -20,12 +21,16 @@ export default class FeedSlider extends Slider {
     });
     this.next = document.querySelectorAll(btnNext);
     this.prev = document.querySelectorAll(btnPrev);
-    this.slideMargin = window.getComputedStyle(this.sliderField.querySelector('.feed__item')).marginRight;
-    this.slideWith = window.getComputedStyle(this.sliderField.querySelector('.feed__item:not(.feed__item-active)')).width;
-    this.activSlideWith = window.getComputedStyle(this.sliderField.querySelector('.feed__item-active')).width;
-    this.step = parseInt(this.slideMargin) + parseInt(this.slideWith);
-    this.offset = parseInt(this.activSlideWith) - parseInt(this.slideWith) + parseInt(this.slideMargin);
-    this.slidesLenght = this.slides.length;
+    
+    try {
+      this.slideMargin = window.getComputedStyle(this.sliderField.querySelector('.feed__item')).marginRight;
+      this.slideWith = window.getComputedStyle(this.sliderField.querySelector('.feed__item:not(.feed__item-active)')).width;
+      this.activSlideWith = window.getComputedStyle(this.sliderField.querySelector('.feed__item-active')).width;
+      this.step = parseInt(this.slideMargin) + parseInt(this.slideWith);
+      this.offset = parseInt(this.activSlideWith) - parseInt(this.slideWith) + parseInt(this.slideMargin);
+      this.slidesLenght = this.slides.length; 
+    } catch (error) {}
+
     this.startAutoplayAction = document.querySelectorAll(startAutoplayAction);
 
   }
@@ -49,6 +54,7 @@ export default class FeedSlider extends Slider {
     });
 
     this.reInitSlides();
+    this.reInitVideoPlayer();
 
     this.wraper.style.cssText = `overflow: hidden;
                                 position: relative;`;
@@ -105,6 +111,7 @@ export default class FeedSlider extends Slider {
     }
 
     this.reInitSlides();
+    this.reInitVideoPlayer();
 
     this.slides.forEach(slide => {
       slide.addEventListener('mouseenter', e => {
@@ -114,7 +121,9 @@ export default class FeedSlider extends Slider {
       });
 
       slide.addEventListener('mouseleave', () => {
-        if (!this.idTimer) {
+        const blockOverlay = document.querySelector('.overlay');
+
+        if (!this.idTimer && (blockOverlay.style.display === '' || blockOverlay.style.display === 'none')) {
           this.beginAutoplay(() => {
             this.plusSlides.call(this);
           });
@@ -125,9 +134,7 @@ export default class FeedSlider extends Slider {
     this.changeSlide();
   }
 
-  render() {
-    this.initSlider();
-
+  bindTriggers() {
     try {
       this.next.forEach(btn => {
         btn.addEventListener('click', e => {
@@ -161,16 +168,54 @@ export default class FeedSlider extends Slider {
 
       });
     } catch (e) {}
+  }
 
-    this.startAutoplayAction.forEach((action, i) => {
-      action.addEventListener('click', () => {
-        if (this.startAutoplayAction[i + 1] && this.startAutoplayAction[i + 1].closest('.feed') && !this.idTimer) {
+  reInitVideoPlayer() {
+    
+    this.vidoePlayer = new VideoPlayer({
+      triggers: '.feed__item .playvideo', 
+      popup: '.overlay',
+      slide: this.slides[this.slidesLenght],
+    });
+
+    this.vidoePlayer.init();
+
+    this.slides.forEach( slide => {
+      const btnPlayVideoSlide = slide.querySelector('.playvideo');
+
+      btnPlayVideoSlide.addEventListener('click', e => {
+        
+        e.preventDefault();
+        this.stopAutoplay();
+      });
+    });
+  }
+
+  render() {
+    try {
+      this.initSlider();
+      this.bindTriggers();
+      
+      this.startAutoplayAction.forEach((action, i) => {
+        action.addEventListener('click', () => {
+          if (this.startAutoplayAction[i + 1] && this.startAutoplayAction[i + 1].closest('.feed') && !this.idTimer) {
+            this.beginAutoplay(() => {
+              this.plusSlides.call(this, 1);
+            });
+          }
+        });
+      });
+
+      document.querySelector('.overlay .close').addEventListener('click', () => {
+        if(!this.idTimer) {
           this.beginAutoplay(() => {
             this.plusSlides.call(this, 1);
           });
         }
-      });
-    });
 
+      });
+    } catch (error) {
+      
+    }
   }
 }
