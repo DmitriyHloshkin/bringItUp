@@ -6,6 +6,8 @@ import FeedSlider from './modules/slider/slider-feed.js';
 import VideoPlayer from './modules/playVideo.js';
 import DifferenceCard from './modules/difference.js';
 import Forms from './modules/forms.js';
+import ShowInfo from './modules/showInfo.js';
+import Download from './modules/download.js';
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -117,6 +119,17 @@ window.addEventListener('DOMContentLoaded', () => {
       headers: {},
     },
   }).init();
+
+  // show info
+  new ShowInfo({
+    trigger: '.module__info-show .plus',
+    info: '.msg',
+  }).render();
+
+  // download
+  new Download({
+    triggers: '.module .download',
+  }).render();
 
 });
 
