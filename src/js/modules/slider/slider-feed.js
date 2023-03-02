@@ -26,6 +26,7 @@ export default class FeedSlider extends Slider {
       this.slideMargin = window.getComputedStyle(this.sliderField.querySelector('.feed__item')).marginRight;
       this.slideWith = window.getComputedStyle(this.sliderField.querySelector('.feed__item:not(.feed__item-active)')).width;
       this.activSlideWith = window.getComputedStyle(this.sliderField.querySelector('.feed__item-active')).width;
+      console.log(this.activSlideWith);
       this.step = parseInt(this.slideMargin) + parseInt(this.slideWith);
       this.offset = parseInt(this.activSlideWith) - parseInt(this.slideWith) + parseInt(this.slideMargin);
       this.slidesLenght = this.slides.length; 
@@ -86,6 +87,7 @@ export default class FeedSlider extends Slider {
 
       if (i === this.slidesLenght) {
         slide.classList.add('feed__item-active');
+        slide.style.overflow = 'hidden';
         slide.style.zIndex = '2';
       }
 

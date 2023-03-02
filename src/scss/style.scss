@@ -1,11 +1,10 @@
-@import '../../node_modules/normalize.css/normalize';
-@import 'variable/variables';
-@import 'mixins/mixins';
-@import 'fonts/fonts';
-@import '../../node_modules/animate.css/animate';
+@import "../../node_modules/normalize.css/normalize";
+@import "variable/variables";
+@import "mixins/mixins";
+@import "fonts/fonts";
+@import "../../node_modules/animate.css/animate";
 
-@import 'main';
-
+@import "main";
 
 .showup {
   &__content {
@@ -15,14 +14,12 @@
       width: 650px;
     }
   }
-
 }
 
 .feed {
   .colored {
     height: 50%;
   }
-
 }
 
 .feed__slider__field,
@@ -44,7 +41,6 @@
       width: 100%;
     }
   }
-
 }
 
 .schedule {
@@ -83,28 +79,563 @@
       justify-content: flex-start;
       align-items: center;
       text-align: center;
-
     }
   }
 }
 
+.difference__info {
+  width: 50%;
+}
+
 @media (max-width: 1200px) {
   .showup {
-    
     &__content {
-      width: 1100px;
+      width: 890px;
+    }
+
+    .play {
+      top: 80px;
+    }
+
+    &__video {
+      height: 80%;
+    }
+
+    &__content {
+      height: 242px;
+    }
+
+    &__content-explore {
+      width: 225px;
+      margin-left: 10px;
+    }
+
+    &__content-title {
+      font-size: 23px;
+    }
+
+    &__content-slider {
+      width: 500px;
+    }
+    .card {
+      height: 170px;
+      padding-top: 60px;
+    }
+
+    .title {
+      font-size: 40px;
+    }
+  }
+
+  .difference {
+    &__info {
+      width: 80%;
+    }
+
+    &__photo {
+      height: 83%;
+    }
+
+    &__info-cards {
+      justify-content: flex-start;
+    }
+
+    .officerold {
+      width: 40%;
+    }
+
+    .officer__card-title {
+      width: 237px;
+      font-size: 21px;
+      margin-top: 9px;
+      padding: 20px 43px 17px 30px;
+    }
+
+    .officer__card-item {
+      width: 237px;
+      .card__descr {
+        padding: 12px 12px 13px 7px;
+        font-size: 13px;
+      }
+
+      .card__click {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .modules {
+    &__content-slider {
+      .card {
+        height: 330px;
+      }
+    }
+
+    &__slider-container {
+      width: 500px;
+    }
+
+    .card {
+      &-active {
+        padding: 14px;
+        padding-top: 170px;
+      }
+
+      &__description-item {
+        margin-bottom: 9px;
+      }
+    }
+
+    &__info {
+      .subtitle {
+        margin-top: 9px;
+      }
+
+      .btn {
+        margin-top: 10px;
+      }
+    }
+
+    &__info-btns {
+      margin-top: 21px;
+    }
+
+    &__content-slider {
+      margin-top: 60px;
+
+      .card {
+        width: 220px;
+      }
+      .card__title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .join {
+    .menu__block-schedule {
+      letter-spacing: 0px;
+    }
+
+    .title {
+      margin-top: 10px;
+    }
+
+    .form__block div input,
+    .form__block div select {
+      width: 250px;
+    }
+  }
+
+  .feed {
+    &__item {
+      width: 150px;
+      min-height: 240px;
+      padding: 15px 5px 44px 5px;
+      // margin-right: 40px;
+
+      .author__name {
+        font-size: 14px;
+        margin-top: 12px;
+      }
+
+      .author__preview {
+        font-size: 13px;
+      }
+
+      .descr {
+        line-height: 20px;
+      }
+
+      &-active {
+        width: 340px;
+        padding: 8px 21px 8px 20px;
+
+        .feed__item-play {
+          padding-top: 9px;
+        }
+
+        hr {
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+
+  .schedule {
+    &__info .colored .video {
+      width: 239px;
+      height: 138px;
     }
   }
 }
 
 @media (max-width: 991px) {
+  .showup {
+    &__content {
+      width: 677px;
+    }
 
+    &__content-title {
+      font-size: 17px;
+      margin-right: 14px;
+      line-height: 27px;
+    }
+    &__content {
+      padding: 40px 0 40px 10px;
+    }
+
+    &__content-slider {
+      width: 430px;
+    }
+
+    &__video {
+      width: 100%;
+    }
+
+    &__intro {
+      padding-right: 40px;
+      padding-left: 32px;
+    }
+
+    .btn {
+      padding: 17px 33px 18px 27px;
+    }
+  }
+
+  .difference {
+    &__info {
+      width: 100%;
+      padding-right: 250px;
+      padding-left: 34px;
+      padding-top: 11px;
+    }
+
+    &__photo {
+      height: 83%;
+      width: 0;
+    }
+  }
+
+  .modules {
+    &__info {
+      height: 50%;
+      padding-left: 40px;
+      width: 100%;
+
+      .title {
+        margin-top: 0;
+      }
+
+      .subtitle {
+        position: absolute;
+        left: 328px;
+        top: 100px;
+      }
+
+      &-btns {
+        position: absolute;
+        left: 230px;
+        top: 218px;
+      }
+    }
+
+    &__wrapper {
+      flex-direction: column;
+    }
+
+    &__slider {
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      display: flex;
+      position: absolute;
+      top: 52%;
+      left: 83px;
+    }
+
+    &__content-slider {
+      margin-top: 0;
+      margin-left: 160px;
+    }
+
+    .card {
+      height: 236px;
+      padding-top: 206px;
+
+      &-active {
+        padding-top: 106px;
+      }
+    }
+  }
+
+  .join {
+    &__intro {
+      width: 0;
+    }
+
+    &__evolution {
+      position: absolute;
+      left: 100px;
+
+      .form__block {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .feed {
+    .title {
+      font-size: 45px;
+    }
+
+    &__slider {
+      .slick-prev,
+      .slick-next {
+        display: none;
+      }
+    }
+
+    &__item-active {
+      min-height: 300px;
+      max-height: 341px;
+    }
+  }
+
+  .schedule {
+    .title {
+      font-size: 34px;
+    }
+
+    .colored {
+      padding-left: 10px;
+
+      .video {
+        width: 172px;
+        height: 90px;
+
+        .play {
+          left: 68%;
+          justify-content: flex-start;
+        }
+
+        .play__text {
+          margin-left: 5px;
+          font-size: 13px;
+        }
+
+        .play__circle {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+
+    &__form {
+      padding-left: 10px;
+    }
+
+    .form__item {
+      margin-top: 10px;
+
+      .icon {
+        right: 83px;
+      }
+    }
+
+    .form__item input {
+      width: 280px;
+    }
+  }
 }
 
 @media (max-width: 767px) {
 
-}
+  .showup {
+    .menu {
+      padding-left: 100px;
+    }
 
-@media (max-width: 575px) {
+    &__content {
+      width: 500px;
+    }
+
+    &__content-title {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+  }
+
+  .difference {
+
+    .officer__card-title {
+      width: 200px;
+    }
+
+    .officerold {
+      width: 36%;
+    }
+
+    .officer__card-item {
+      width: 200px;
+    }
+
+    .card__click {
+      padding-left: 5px;
+    }
+
+    &__info {
+      padding-left: 9px;
+    }
+
+  }
+
+  .modules {
+
+    .subtitle {
+      left: 296px;
+    }
+
+    .menu__block-schedule {
+      margin-right: 136px;
+    }
+
+  }
+
+  .join {
+
+    .form__block div input,
+    .form__block div select {
+      width: 210px;
+    }
+
+    .title {
+      font-size: 45px;
+    }
+
+    .btn {
+      padding: 8px 18px 8px 24px;
+      margin-top: 5px;
+    }
+  }
+
+
+  .feed {
+    .title {
+      font-size: 34px;
+    }
+
+    .btn {
+      padding: 8px 18px 8px 24px;
+    }
+
+  }
+
+  .schedule {
+
+    .colored {
+      flex-direction: column;
+    }
+
+    .contacts__links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .colored .video {
+      .play__circle {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .contacts__phone {
+      text-align: center;
+    }
+
+    &__info {
+      .title {
+        color: #fff;
+        margin-left: 25px;
+      }
+    }
+
+    .title {
+      font-size: 28px;
+    }
+
+    .schedule__info {
+      .subtitle {
+        margin-left: 28px;
+      }
+    }
+
+    &__form-title {
+      font-size: 28px;
+    }
+
+    .form__item input {
+      width: 200px;
+    }
+
+    &__form {
+      .form__item {
+        margin-top: 32px;
+        width: 260px;
+        position: relative;
+      }
+
+      .validation-block {
+        left: 37%;
+      }
+
+      // .form__item {
+      //   width: 206px;
+      // }
+    }
+
+    // .colored {
+    //   padding-left: 10px;
+
+    //   .video {
+    //     width: 172px;
+    //     height: 90px;
+
+    //     .play {
+    //       left: 68%;
+    //       justify-content: flex-start;
+    //     }
+
+    //     .play__text {
+    //       margin-left: 5px;
+    //       font-size: 13px;
+    //     }
+
+    //     .play__circle {
+    //       width: 50px;
+    //       height: 50px;
+    //     }
+    //   }
+    // }
+
+    // &__form {
+    //   padding-left: 10px;
+    // }
+
+    // .form__item {
+    //   margin-top: 10px;
+
+    //   .icon {
+    //     right: 83px;
+    //   }
+    // }
+
+    // .form__item input {
+    //   width: 280px;
+    // }
+  }
 
 }

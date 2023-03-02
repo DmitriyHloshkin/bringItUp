@@ -99,9 +99,7 @@ export default class ExploreSlider extends ModulesSlider {
           }
         });
       });
-    } catch (error) {
-      
-    }
+    } catch (error) {}
 
 
   }
